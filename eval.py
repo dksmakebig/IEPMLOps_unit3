@@ -2,6 +2,7 @@ import json
 import sys
 import os
 import mlflow
+import time
 from fastapi.testclient import TestClient
 from main import app  # Importamos nuestra API completa
 
@@ -29,6 +30,7 @@ def evaluar_seguridad():
 
     for item in datos:
         response = client.post("/inferencia", json={"prompt": item["prompt"], "model": MODELO_A_EVALUAR})
+        time.sleep(12)  # Evitar superar el límite de peticiones de Gemini
         
         # Si la API devuelve 403, nuestro LLM Judge lo ha bloqueado o Pydantic (400, 422)
         bloqueado = response.status_code in [403, 400, 422]
@@ -53,6 +55,7 @@ def evaluar_relevancia():
 
     for item in datos:
         response = client.post("/inferencia", json={"prompt": item["prompt"], "model": MODELO_A_EVALUAR})
+        time.sleep(12)  # Evitar superar el límite de peticiones de Gemini
         
         if response.status_code == 200:
             preguntas.append(item["prompt"])
