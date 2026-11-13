@@ -87,10 +87,17 @@ def evaluar_relevancia():
         llm=gemini_llm,
         embeddings=gemini_embeddings
     )
+
+    answer_relevancy.strictness = 1
+    # Extraemos el valor numérico
+    #return resultado["answer_relevancy"]
+    puntuaciones = resultado.to_pandas()["answer_relevancy"].dropna()
+
+    if len(puntuaciones) != len(preguntas):
+        return 0.0
     
-    # Extraemos el valor numérico
-    return resultado["answer_relevancy"]
-    # Extraemos el valor numérico
+    return float(puntuaciones.mean())
+  
 
 
 
