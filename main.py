@@ -119,9 +119,16 @@ async def inferencia(request: InferenceRequest):
             )
         )
         return {"resultado": respuesta.text}
+
     except Exception as e:
+        print(f"Error Gemini: {type(e).__name__}: {e}")
+        raise HTTPException(
+            status_code=400,
+            detail="El modelo rechazó la solicitud."
+        )
+    #except Exception as e:
         # Gestión opaca de cualquier otro error del modelo
-        raise HTTPException(status_code=400, detail="El modelo rechazó la solicitud.")
+       # raise HTTPException(status_code=400, detail="El modelo rechazó la solicitud.")
 
 # Endpoint de salud (Health Check)
 @app.get("/")
