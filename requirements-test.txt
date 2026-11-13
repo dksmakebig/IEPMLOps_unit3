@@ -4,3 +4,6 @@ httpx
 ragas
 datasets
 langchain-google-genai
+
+# Corregir error de compatibilidad entre Ragas y LangChain
+langchain-community==0.3.31
