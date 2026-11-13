@@ -59,6 +59,7 @@ def evaluar_relevancia():
             respuestas.append(response.json()["resultado"])
         else:
             print(f"⚠️ Error en la inferencia para: {item['prompt']}")
+            print(f"HTTP {response.status_code}: {response.text}")
             return 0.0 # Castigamos la métrica si la API falla
 
     # 1. Ragas requiere un formato específico de Dataset (HuggingFace)
