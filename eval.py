@@ -74,7 +74,7 @@ def evaluar_relevancia():
     os.environ["GOOGLE_API_KEY"] = os.environ.get("GEMINI_API_KEY", "")
     
     # Instanciamos el LLM y el modelo de Embeddings evaluadores
-    gemini_llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
+    gemini_llm = ChatGoogleGenerativeAI(model="gemini-3.5-flash-lite")
     gemini_embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 
     # 3. Ejecutar la evaluación matemática de Ragas
@@ -87,6 +87,8 @@ def evaluar_relevancia():
     
     # Extraemos el valor numérico
     return resultado["answer_relevancy"]
+    # Extraemos el valor numérico
+
 
 
 if __name__ == "__main__":
