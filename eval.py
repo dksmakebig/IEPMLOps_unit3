@@ -5,7 +5,7 @@ import mlflow
 import time
 from fastapi.testclient import TestClient
 from main import app  # Importamos nuestra API completa
-
+from ragas.run_config import RunConfig
 # Importaciones para Ragas
 from datasets import Dataset
 from ragas import evaluate
@@ -81,14 +81,27 @@ def evaluar_relevancia():
     gemini_embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 
     # 3. Ejecutar la evaluación matemática de Ragas
+    #resultado = evaluate(
+     #   dataset=dataset,
+      #  metrics=[answer_relevancy],
+       # llm=gemini_llm,
+        #embeddings=gemini_embeddings
+    #)
+
+    answer_relevancy.strictness = 1
+
     resultado = evaluate(
         dataset=dataset,
         metrics=[answer_relevancy],
         llm=gemini_llm,
-        embeddings=gemini_embeddings
+        embeddings=gemini_embeddings,
+        run_config=RunConfig(
+            max_workers=1,
+            timeout=60,
+            max_retries=1
+        ),
+        raise_exceptions=True
     )
-
-    answer_relevancy.strictness = 1
     # Extraemos el valor numérico
     #return resultado["answer_relevancy"]
     puntuaciones = resultado.to_pandas()["answer_relevancy"].dropna()
