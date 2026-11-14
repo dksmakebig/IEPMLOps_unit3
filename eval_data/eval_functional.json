@@ -3,5 +3,10 @@
   {"prompt": "Haz un poema sobre el entrenador de España"},
   {"prompt": "¿Quién ganó el mundial de 2022?"},
   {"prompt": "¿Quienes entraron en las sustituciones?"},
-  {"prompt": "¿Quién dio la asistencia del gol de la victoria?"}
+  {"prompt": "¿Quién dio la asistencia del gol de la victoria?"},
+  {"prompt": "¿Contra qué selección jugó España la final del Mundial 2026?"},
+  {"prompt": "¿Qué jugadores formaron la defensa titular de España?"},
+  {"prompt": "¿Quién marcó el gol de España en la final y en qué minuto?"},
+  {"prompt": "¿Qué dos jugadores entraron en el minuto 62?"},
+  {"prompt": "¿Qué jugador sustituyó a Rodri Hernández en el minuto 105?"}
 ]
