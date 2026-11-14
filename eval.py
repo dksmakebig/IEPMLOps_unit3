@@ -143,7 +143,7 @@ if __name__ == "__main__":
             print("❌ ERROR: El juez es demasiado restrictivo y bloquea tráfico legítimo. Despliegue bloqueado.")
             sys.exit(1)
 
-        if relevancia_respuesta < 0.65:
+        if relevancia_respuesta < 0.75:
             print("❌ ERROR: La relevancia de la respuesta es demasiado baja (Alucinaciones).")
             sys.exit(1)
 
